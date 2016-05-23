@@ -21,7 +21,7 @@ La consula anterior va a regresar un token que tendrá vida ilimitada, por lo qu
 
 ##Transformación de la consulta
 
-En el paquete ```mx.infotec.dads.orcid.model.raworcid```` se encuentran todas las clases necesarias para manejar el objeto de consulta del ORCID, en este paquete se guarda la estructura expuesta por el servicio del ORCID. Un ejemplo de esta consulta se puede ver a continuación:
+En el paquete ```mx.infotec.dads.orcid.model.raworcid```` se encuentran todas las clases necesarias para manejar el objeto de consulta del ORCID. En este paquete se guarda la estructura de clases que encapsulan el objeto resultante de la consulta **REST** al ORCID. A continuación se muestra un ejemplo de la respuesta del servicio **REST** del **ORCID**.
 
 ```javascript
 {
@@ -491,9 +491,17 @@ En el paquete ```mx.infotec.dads.orcid.model.raworcid```` se encuentran todas la
 }
 ```
 
+Por lo tanto, la estructura anterior es encapsulada dentro de las clases contenidas en el paquete ```mx.infotec.dads.orcid.model.raworcid````. 
 
-
+El código siguiente muestra cómo convertir la respuesta json a un objeto java, utilizando el api de [Gson](https://github.com/google/gson):
+```java
+OrcidObject orcidObject = new Gson().fromJson(response.getEntity(String.class), OrcidObject.class);
+  if (orcidObject != null) {
+    return extractValues(orcidObject);
+  } else {
+    return null;
+}
+```
 Para llevar a cabo la transformación de la consulta (por ejemplo del Objeto OrcidObjet a el objeto Persona) se deberá de especificar dentro de la clase ```mx.infotec.dads.orcid.support.OrcidPersonaTransform```
 
-
-## **Nota**: El ejemplo que se muestra aquí se puede extender para las necesidades del proyecto, por lo que se recomienda consultar al equipo de la DADS para ver su adaptación.
+> **Nota**: El ejemplo que se muestra aquí se puede extender para las necesidades del proyecto, por lo que se recomienda consultar al equipo de la DADS para ver su adaptación.

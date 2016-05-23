@@ -29,5 +29,5 @@ public interface ConsultaOrcidService {
 	 * @return
 	 * @throws OrcidServiceException
 	 */
-	List<Persona> consultaPorIdList(String idOrcid) throws OrcidServiceException;
+	List<Persona> consultaListaPorId(String idOrcid) throws OrcidServiceException;
 }

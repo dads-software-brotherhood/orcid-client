@@ -57,7 +57,7 @@ public class ConsultaOrcidServiceImpl implements ConsultaOrcidService {
 	}
 
 	@Override
-	public List<Persona> consultaPorIdList(String idOrcid) throws OrcidServiceException {
+	public List<Persona> consultaListaPorId(String idOrcid) throws OrcidServiceException {
 		Credential credential = credentialManagerService.loadCredentials(CredentialSource.CREDENTIAL_CLASS);
 		WebResource webResource = createWebResource(credential, idOrcid);
 		ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);

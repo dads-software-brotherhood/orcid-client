@@ -1,5 +1,6 @@
 package mx.infotec.dads.orcid.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.yaml.snakeyaml.scanner.Constant;
@@ -55,6 +56,24 @@ public class ConsultaOrcidServiceImpl implements ConsultaOrcidService {
 		}
 	}
 
+	@Override
+	public List<Persona> consultaPorIdList(String idOrcid) throws OrcidServiceException {
+		Credential credential = credentialManagerService.loadCredentials(CredentialSource.CREDENTIAL_CLASS);
+		WebResource webResource = createWebResource(credential, idOrcid);
+		ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
+
+		if (response.getStatus() != 200) {
+			throw new OrcidServiceException(
+					"Consulta al servicio del Orcid, HTTP error code : " + response.getStatus());
+		}
+		OrcidObject orcidObject = new Gson().fromJson(response.getEntity(String.class), OrcidObject.class);
+		if (orcidObject != null) {
+			return extractListValues(orcidObject);
+		} else {
+			return new ArrayList<>();
+		}
+	}
+
 	private static WebResource createWebResource(Credential credential, String idOrcid) {
 
 		Client client = Client.create();
@@ -72,6 +91,20 @@ public class ConsultaOrcidServiceImpl implements ConsultaOrcidService {
 			return OrcidPersonaTransform.tranform(osr.getOrcidProfile());
 		} else {
 			return null;
+		}
+	}
+
+	private static List<Persona> extractListValues(OrcidObject orcidObject) {
+		OrcidSearchResults orcidSearchResults = orcidObject.getOrcidSearchResults();
+		List<Persona> personas = new ArrayList<Persona>();
+		if (orcidSearchResults.getNumFound() > 0) {
+			List<OrcidSearchResult> orcidSearchResult = orcidSearchResults.getOrcidSearchResult();
+			for (OrcidSearchResult result : orcidSearchResult) {
+				personas.add(OrcidPersonaTransform.tranform(result.getOrcidProfile()));
+			}
+			return personas;
+		} else {
+			return personas;
 		}
 	}
 }

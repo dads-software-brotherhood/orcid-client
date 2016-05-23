@@ -1,5 +1,7 @@
 package mx.infotec.dads.orcid.service;
 
+import java.util.List;
+
 import mx.infotec.dads.orcid.exceptions.OrcidServiceException;
 import mx.infotec.dads.orcid.model.Persona;
 
@@ -18,4 +20,14 @@ public interface ConsultaOrcidService {
 	 * @throws OrcidServiceException
 	 */
 	Persona consultaPorId(String idOrcid) throws OrcidServiceException;
+
+	/**
+	 * Método para la consulta de persona por su idOrcid. El resultado es un
+	 * conjunto de valores
+	 * 
+	 * @param idOrcid
+	 * @return
+	 * @throws OrcidServiceException
+	 */
+	List<Persona> consultaPorIdList(String idOrcid) throws OrcidServiceException;
 }

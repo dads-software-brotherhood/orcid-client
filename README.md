@@ -14,7 +14,8 @@ El servicio del ORCID va a requerir de tres parámetros, mismos que se describen
 2. **token**: el token será obtenido una ves que se solicite al servicio del ORCID; tal y cómo se describe en a continuación:
 
 ```bash
-curl -i -L -H "Accept: application/json" -d "client_id=APP-NPXKK6HFN6TJ4YYI" -d "client_secret=060c36f2-cce2-4f74-bde0-a17d8bb30a97" -d "scope=/read-public" -d "grant_type=client_credentials" "https://api.sandbox.orcid.org/oauth/token"
+curl -i -L -H "Accept: application/json" -d "client_id=APP-NPXKK6HFN6TJ4YYI" -d "client_secret=060c36f2-cce2-4f74-bde0-a17d8bb30a97" -d "scope=/read-public" -d "grant_type=client_credentials" "https://api.orcid.org/oauth/token"
 ```
+La consula anterior va a regresar un token que tendrá vida ilimitada, por lo que se podrá utilizar para llevar a cabo todas la consultas necesarias al servicio del **ORCID**.
 
- 
+ ##Nota: El ejemplo que se muestra aquí se puede extender para las necesidades del proyecto, por lo que se recomienda consultar al equipo de la DADS para ver su adaptación.

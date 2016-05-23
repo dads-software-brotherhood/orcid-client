@@ -24,7 +24,9 @@ public class OrcidPersonaTransform {
     persona.setIdentificador(persona.getIdOrcid());
     persona.setIdTipoIdentificador(0);
     persona.setNombres(orcidBio.getPersonalDetails().getGivenNames().getValue());
-    persona.setPrimerApellido(orcidBio.getPersonalDetails().getFamilyName().getValue());
+    if(orcidBio.getPersonalDetails().getFamilyName()!=null){
+    	persona.setPrimerApellido(orcidBio.getPersonalDetails().getFamilyName().getValue());    	
+    }
     persona.setTipoPersona("F");
     return persona;
   }

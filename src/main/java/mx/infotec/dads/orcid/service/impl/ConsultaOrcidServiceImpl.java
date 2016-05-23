@@ -3,8 +3,6 @@ package mx.infotec.dads.orcid.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.yaml.snakeyaml.scanner.Constant;
-
 import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;

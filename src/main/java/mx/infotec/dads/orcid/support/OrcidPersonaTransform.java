@@ -6,6 +6,13 @@ import mx.infotec.dads.orcid.model.Persona;
 import mx.infotec.dads.orcid.model.raworcid.OrcidBio;
 import mx.infotec.dads.orcid.model.raworcid.OrcidProfile;
 
+/**
+ * Clase OrcidPersonaTransform empleada para la tranformación del Objeto
+ * OrcidProfile a uno de tipo Persona.
+ * 
+ * @author Daniel Cortes Pichardo
+ *
+ */
 public class OrcidPersonaTransform {
 
 	/**

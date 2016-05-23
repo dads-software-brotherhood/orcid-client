@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import mx.infotec.dads.orcid.exceptions.OrcidServiceException;
 import mx.infotec.dads.orcid.model.Persona;
 import mx.infotec.dads.orcid.service.impl.ConsultaOrcidServiceImpl;
 import mx.infotec.dads.orcid.service.impl.CredencialsManagerServiceImpl;
@@ -28,7 +29,7 @@ public class ConsultaOrcidServiceTest {
   }
 
   @Test
-  public void consultaPorId() {
+  public void consultaPorId() throws OrcidServiceException {
     Persona persona = consultaOrcidService.consultaPorId("0000-0001-5594-0524");
     if (persona != null) {
       LOGGER.info("Fecha: " + persona.getFechaNacCons());

@@ -1,5 +1,6 @@
 package mx.infotec.dads.orcid.service.impl;
 
+import mx.infotec.dads.orcid.exceptions.OrcidRuntimeException;
 import mx.infotec.dads.orcid.model.Credential;
 import mx.infotec.dads.orcid.service.CredentialManagerService;
 import mx.infotec.dads.orcid.support.CredentialSource;
@@ -11,7 +12,7 @@ import mx.infotec.dads.orcid.support.CredentialSource;
  * @author Daniel Cortes Pichardo
  *
  */
-public class CredencialsManagerServiceImpl implements CredentialManagerService {
+public class DefaultCredencialsManagerServiceImpl implements CredentialManagerService {
 
   @Override
   public Credential loadCredentials(CredentialSource source) {
@@ -24,9 +25,8 @@ public class CredencialsManagerServiceImpl implements CredentialManagerService {
         credential.setToken("4f338496-c5a5-4f6e-a350-2dce8fee93a6");
         return credential;
       default:
-        break;
+        throw new OrcidRuntimeException("Opción No soportada: " + source.name());
     }
-    return null;
   }
 
 

@@ -3,7 +3,7 @@ package mx.infotec.dads.orcid.service;
 import java.util.List;
 
 import mx.infotec.dads.orcid.exceptions.OrcidServiceException;
-import mx.infotec.dads.orcid.model.Persona;
+import mx.infotec.dads.orcid.model.PersonaGenerica;
 
 /**
  * Interface para la consulta del ORCID
@@ -19,7 +19,7 @@ public interface ConsultaOrcidService {
    * @return Persona con el identificador de idOrcid
    * @throws OrcidServiceException
    */
-  Persona consultaPorId(String idOrcid) throws OrcidServiceException;
+  PersonaGenerica consultaPorId(String idOrcid) throws OrcidServiceException;
 
   /**
    * Método para la consulta de persona por su idOrcid. El resultado es un conjunto de valores
@@ -28,5 +28,5 @@ public interface ConsultaOrcidService {
    * @return
    * @throws OrcidServiceException
    */
-  List<Persona> consultaListaPorId(String idOrcid) throws OrcidServiceException;
+  List<PersonaGenerica> consultaListaPorId(String idOrcid) throws OrcidServiceException;
 }

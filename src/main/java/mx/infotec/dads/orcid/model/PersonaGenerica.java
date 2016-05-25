@@ -9,7 +9,7 @@ import java.util.Date;
  * @author Daniel Cortes Pichardo
  *
  */
-public class Persona {
+public class PersonaGenerica {
 
   private Date    fechaNacCons;
   private String  idOrcid;

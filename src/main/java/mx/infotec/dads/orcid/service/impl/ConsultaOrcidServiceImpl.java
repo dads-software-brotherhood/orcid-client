@@ -10,7 +10,7 @@ import com.sun.jersey.api.client.WebResource;
 
 import mx.infotec.dads.orcid.exceptions.OrcidServiceException;
 import mx.infotec.dads.orcid.model.Credential;
-import mx.infotec.dads.orcid.model.Persona;
+import mx.infotec.dads.orcid.model.PersonaGenerica;
 import mx.infotec.dads.orcid.model.raworcid.OrcidObject;
 import mx.infotec.dads.orcid.model.raworcid.OrcidSearchResult;
 import mx.infotec.dads.orcid.model.raworcid.OrcidSearchResults;
@@ -24,7 +24,7 @@ import mx.infotec.dads.orcid.support.OrcidPersonaTransform;
  * Servicio que implementa la consulta del ORCID. Esta clase es sólo para fines demostrativos, se
  * deberá de adaptar a las necesidades reales de cada aplicación.
  * 
- * @author Daniel Cortes Pichard
+ * @author Daniel Cortes Pichardo
  *
  */
 public class ConsultaOrcidServiceImpl implements ConsultaOrcidService {
@@ -36,7 +36,7 @@ public class ConsultaOrcidServiceImpl implements ConsultaOrcidService {
   }
 
   @Override
-  public Persona consultaPorId(String idOrcid) throws OrcidServiceException {
+  public PersonaGenerica consultaPorId(String idOrcid) throws OrcidServiceException {
     Credential credential =
         credentialManagerService.loadCredentials(CredentialSource.CREDENTIAL_CLASS);
     WebResource webResource = createWebResource(credential, idOrcid);
@@ -56,7 +56,7 @@ public class ConsultaOrcidServiceImpl implements ConsultaOrcidService {
   }
 
   @Override
-  public List<Persona> consultaListaPorId(String idOrcid) throws OrcidServiceException {
+  public List<PersonaGenerica> consultaListaPorId(String idOrcid) throws OrcidServiceException {
     Credential credential =
         credentialManagerService.loadCredentials(CredentialSource.CREDENTIAL_CLASS);
     WebResource webResource = createWebResource(credential, idOrcid);
@@ -84,7 +84,7 @@ public class ConsultaOrcidServiceImpl implements ConsultaOrcidService {
     return webResource;
   }
 
-  private static Persona extractValues(OrcidObject orcidObject) {
+  private static PersonaGenerica extractValues(OrcidObject orcidObject) {
     OrcidSearchResults orcidSearchResults = orcidObject.getOrcidSearchResults();
     if (orcidSearchResults.getNumFound() > 0) {
       List<OrcidSearchResult> orcidSearchResult = orcidSearchResults.getOrcidSearchResult();
@@ -95,9 +95,9 @@ public class ConsultaOrcidServiceImpl implements ConsultaOrcidService {
     }
   }
 
-  private static List<Persona> extractListValues(OrcidObject orcidObject) {
+  private static List<PersonaGenerica> extractListValues(OrcidObject orcidObject) {
     OrcidSearchResults orcidSearchResults = orcidObject.getOrcidSearchResults();
-    List<Persona> personas = new ArrayList<Persona>();
+    List<PersonaGenerica> personas = new ArrayList<PersonaGenerica>();
     if (orcidSearchResults.getNumFound() > 0) {
       List<OrcidSearchResult> orcidSearchResult = orcidSearchResults.getOrcidSearchResult();
       for (OrcidSearchResult result : orcidSearchResult) {

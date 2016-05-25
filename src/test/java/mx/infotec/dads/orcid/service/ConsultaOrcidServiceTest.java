@@ -8,9 +8,9 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import mx.infotec.dads.orcid.exceptions.OrcidServiceException;
-import mx.infotec.dads.orcid.model.Persona;
+import mx.infotec.dads.orcid.model.PersonaGenerica;
 import mx.infotec.dads.orcid.service.impl.ConsultaOrcidServiceImpl;
-import mx.infotec.dads.orcid.service.impl.CredencialsManagerServiceImpl;
+import mx.infotec.dads.orcid.service.impl.DefaultCredencialsManagerServiceImpl;
 
 /**
  * Ejemplo para la consulta del Orcid. El objetivo de esta clase no es se una
@@ -26,13 +26,13 @@ public class ConsultaOrcidServiceTest {
 
 	@BeforeTest
 	public void beforeTest() {
-		CredentialManagerService credentialManagerService = new CredencialsManagerServiceImpl();
+		CredentialManagerService credentialManagerService = new DefaultCredencialsManagerServiceImpl();
 		consultaOrcidService = new ConsultaOrcidServiceImpl(credentialManagerService);
 	}
 
 	@Test
 	public void consultaPorId() throws OrcidServiceException {
-		Persona persona = consultaOrcidService.consultaPorId("0000-0001-6264-6921");
+		PersonaGenerica persona = consultaOrcidService.consultaPorId("0000-0001-6264-6921");
 		if (persona != null) {
 			LOGGER.info("Fecha: " + persona.getFechaNacCons());
 			LOGGER.info("idOrcid: " + persona.getIdOrcid());
@@ -48,8 +48,8 @@ public class ConsultaOrcidServiceTest {
 
 	@Test
 	public void consultaPorIdList() throws OrcidServiceException {
-		List<Persona> personas = consultaOrcidService.consultaListaPorId("0000");
-		for (Persona persona : personas) {
+		List<PersonaGenerica> personas = consultaOrcidService.consultaListaPorId("0000");
+		for (PersonaGenerica persona : personas) {
 			if (persona != null) {
 				LOGGER.info("Fecha: " + persona.getFechaNacCons());
 				LOGGER.info("idOrcid: " + persona.getIdOrcid());

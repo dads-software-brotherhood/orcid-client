@@ -2,7 +2,7 @@ package mx.infotec.dads.orcid.support;
 
 import java.util.Date;
 
-import mx.infotec.dads.orcid.model.Persona;
+import mx.infotec.dads.orcid.model.PersonaGenerica;
 import mx.infotec.dads.orcid.model.raworcid.OrcidBio;
 import mx.infotec.dads.orcid.model.raworcid.OrcidProfile;
 
@@ -21,9 +21,9 @@ public class OrcidPersonaTransform {
    * en los catálogos del CONACYT.
    */
 
-  public static Persona tranform(OrcidProfile orcidProfile) {
+  public static PersonaGenerica tranform(OrcidProfile orcidProfile) {
     OrcidBio orcidBio = orcidProfile.getOrcidBio();
-    Persona persona = new Persona();
+    PersonaGenerica persona = new PersonaGenerica();
     persona.setFechaNacCons(new Date());
     persona.setIdOrcid(orcidProfile.getOrcidIdentifier().getPath());
     persona.setIdPersonaConacyt(persona.getIdOrcid());
@@ -34,7 +34,7 @@ public class OrcidPersonaTransform {
     return persona;
   }
 
-  private static void addPersonalDetails(Persona persona, OrcidBio orcidBio) {
+  private static void addPersonalDetails(PersonaGenerica persona, OrcidBio orcidBio) {
     if (orcidBio.getPersonalDetails() != null) {
       if (orcidBio.getPersonalDetails().getGivenNames() != null) {
         persona.setNombres(orcidBio.getPersonalDetails().getGivenNames().getValue());

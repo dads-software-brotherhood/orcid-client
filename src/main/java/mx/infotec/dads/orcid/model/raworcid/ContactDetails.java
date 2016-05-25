@@ -10,47 +10,43 @@ import com.google.gson.annotations.SerializedName;
 @Generated("org.jsonschema2pojo")
 public class ContactDetails {
 
-    @SerializedName("email")
-    @Expose
-    private List<Object> email = new ArrayList<Object>();
-    @SerializedName("address")
-    @Expose
-    private Address address;
+  @SerializedName("email")
+  @Expose
+  private List<Object> email = new ArrayList<Object>();
+  @SerializedName("address")
+  @Expose
+  private Address      address;
 
-    /**
-     * 
-     * @return
-     *     The email
-     */
-    public List<Object> getEmail() {
-        return email;
-    }
+  /**
+   * 
+   * @return The email
+   */
+  public List<Object> getEmail() {
+    return email;
+  }
 
-    /**
-     * 
-     * @param email
-     *     The email
-     */
-    public void setEmail(List<Object> email) {
-        this.email = email;
-    }
+  /**
+   * 
+   * @param email The email
+   */
+  public void setEmail(List<Object> email) {
+    this.email = email;
+  }
 
-    /**
-     * 
-     * @return
-     *     The address
-     */
-    public Address getAddress() {
-        return address;
-    }
+  /**
+   * 
+   * @return The address
+   */
+  public Address getAddress() {
+    return address;
+  }
 
-    /**
-     * 
-     * @param address
-     *     The address
-     */
-    public void setAddress(Address address) {
-        this.address = address;
-    }
+  /**
+   * 
+   * @param address The address
+   */
+  public void setAddress(Address address) {
+    this.address = address;
+  }
 
 }

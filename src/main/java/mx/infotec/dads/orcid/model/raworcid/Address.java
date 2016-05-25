@@ -9,26 +9,24 @@ import com.google.gson.annotations.SerializedName;
 @Generated("org.jsonschema2pojo")
 public class Address {
 
-    @SerializedName("country")
-    @Expose
-    private Country country;
+  @SerializedName("country")
+  @Expose
+  private Country country;
 
-    /**
-     * 
-     * @return
-     *     The country
-     */
-    public Country getCountry() {
-        return country;
-    }
+  /**
+   * 
+   * @return The country
+   */
+  public Country getCountry() {
+    return country;
+  }
 
-    /**
-     * 
-     * @param country
-     *     The country
-     */
-    public void setCountry(Country country) {
-        this.country = country;
-    }
+  /**
+   * 
+   * @param country The country
+   */
+  public void setCountry(Country country) {
+    this.country = country;
+  }
 
 }

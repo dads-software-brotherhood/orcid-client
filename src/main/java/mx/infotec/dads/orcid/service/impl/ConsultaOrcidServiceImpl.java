@@ -80,7 +80,7 @@ public class ConsultaOrcidServiceImpl implements ConsultaOrcidService {
     Client client = Client.create();
     client.resource("").header("Authorization:Bearer", credential.getToken()).header("Content-Type",
         "application/orcid+json");
-    WebResource webResource = client.resource(Constantes.URL_ORCID + "?q=" + idOrcid);
+    WebResource webResource = client.resource(Constantes.URL_ORCID + "?q=orcid:" + idOrcid);
     return webResource;
   }
 

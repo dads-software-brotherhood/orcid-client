@@ -32,7 +32,7 @@ public class ConsultaOrcidServiceTest {
 
 	@Test
 	public void consultaPorId() throws OrcidServiceException {
-		PersonaGenerica persona = consultaOrcidService.consultaPorId("0000-0001-6264-6921");
+		PersonaGenerica persona = consultaOrcidService.consultaPorId("0000-0001-5000-5991");
 		if (persona != null) {
 			LOGGER.info("Fecha: " + persona.getFechaNacCons());
 			LOGGER.info("idOrcid: " + persona.getIdOrcid());
@@ -43,10 +43,11 @@ public class ConsultaOrcidServiceTest {
 			LOGGER.info("nombres: " + persona.getNombres());
 			LOGGER.info("primerApellido: " + persona.getPrimerApellido());
 			LOGGER.info("tipoPersona: " + persona.getTipoPersona());
+			LOGGER.info("tipoPersona: " + persona.getTipoPersona());
 		}
 	}
 
-	@Test
+//	@Test
 	public void consultaPorIdList() throws OrcidServiceException {
 		List<PersonaGenerica> personas = consultaOrcidService.consultaListaPorId("0000");
 		for (PersonaGenerica persona : personas) {

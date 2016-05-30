@@ -35,7 +35,7 @@ public class OrcidPersonaTransform {
   }
 
   private static void addPersonalDetails(PersonaGenerica persona, OrcidBio orcidBio) {
-    if (orcidBio.getPersonalDetails() != null) {
+    if (orcidBio != null && orcidBio.getPersonalDetails() != null) {
       if (orcidBio.getPersonalDetails().getGivenNames() != null) {
         persona.setNombres(orcidBio.getPersonalDetails().getGivenNames().getValue());
       }

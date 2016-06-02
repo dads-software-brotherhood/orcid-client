@@ -32,7 +32,7 @@ public class ConsultaOrcidServiceTest {
 
 	@Test
 	public void consultaPorId() throws OrcidServiceException {
-		PersonaGenerica persona = consultaOrcidService.consultaPorId("0000-0001-5000-5991");
+		PersonaGenerica persona = consultaOrcidService.consultaPorId("0000-0001-5276-9864");
 		if (persona != null) {
 			LOGGER.info("Fecha: " + persona.getFechaNacCons());
 			LOGGER.info("idOrcid: " + persona.getIdOrcid());
